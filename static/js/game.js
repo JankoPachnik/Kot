@@ -26,16 +26,20 @@ const map_render = function() {
                 field.style.cssFloat = "left";
                 field.style.height = "30px";
                 document.getElementById("game").appendChild(field);
-                counter += 1;
+                counter += 1; // counting the number of fields
             } else if (element == 1) {
                 const field = document.createElement("div");
-                field.style.backgroundColor = "grey";
                 field.style.width = "30px";
                 field.style.margin = "0px";
                 field.style.cssFloat = "left";
                 field.style.height = "30px";
+                const image = document.createElement("img");
+                image.setAttribute('src', '../images/box.jpg');
+                image.style.width = "100%";
+                image.style.height = "100%";
+                field.appendChild(image);
                 document.getElementById("game").appendChild(field);
-                counter += 1;
+                counter += 1; // counting the number of fields
             }
         })
     });
