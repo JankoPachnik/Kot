@@ -6,11 +6,6 @@
         }
     }
 };*/ //Map generating
-const map_loader = function (level) {
-    const map = level;
-    return map
-};
-
 const create_object = function(type, styles = {backgroundColor:"black", width:"0x", margin:"0px", height:"0px", cssFloat:"none"}){
     const object = document.createElement(type);
     object.style.backgroundColor = styles["backgroundColor"];
@@ -22,7 +17,7 @@ const create_object = function(type, styles = {backgroundColor:"black", width:"0
 };
 
 const create_field = function(){
-    const field = create_object("div", {backgroundColor:"white", width:"30px", margin:"0px", height:"30px", cssFloat:"left"});
+    const field = create_object("div", {backgroundColor:"black", width:"30px", margin:"0px", height:"30px", cssFloat:"left"});
     return field
 };
 
@@ -73,8 +68,24 @@ const map_render = function(map) {
     console.log(counter)
 };
 
+const map_loader = function (level) {
+    const map = level;
+    return map
+};
+
+const level_selector = function(level){
+    var map_level =[];
+    if(level == 'level1')
+        map_level = map_loader(level1());
+    else if(level == 'level2')
+        map_level = map_loader(level2());
+    else if(level == 'level3')
+        map_level = map_loader(level3());
+    return map_level
+};
+
 document.body.style.backgroundColor = "lightgray";
 //map_generate(20);
-const map = map_loader(level1());
+const map = level_selector('level1');
 map_render(map);
 
