@@ -36,30 +36,37 @@ const game_render = function(map) {
         element.forEach(function (element) {
             const field = create_field();
             if (element == 0){
-                //const image = create_image("/static/images/grass.jpg");
-                //field.appendChild(image);
+                field.setAttribute("class", "empty");
             } else if (element == 'b') { //box rendering
                 const image = create_image("/static/images/box.jpg");
                 field.appendChild(image);
+                field.setAttribute("class", "box");
             } else if (element == 'w'){
                 const image = create_image("/static/images/wall.png");
                 field.appendChild(image);
-            } else if (element == 'l') {
+                field.setAttribute("class", "wall");
+            } else if (element == 'w') {
                 const image = create_image("/static/images/lighter.png");
                 field.appendChild(image);
+                field.setAttribute("class", "light");
             } else if (element == 'm') {
                 const image = create_image("/static/images/milk.png");
                 field.appendChild(image);
+                field.setAttribute("class", "milk");
             } else if (element == 'd') {
                 const image = create_image("/static/images/door.png");
                 field.appendChild(image);
+                field.setAttribute("class", "door");
             } else if (element == 'k') {
                 const image = create_image("/static/images/key.png");
                 field.appendChild(image);
+                field.setAttribute("class", "key");
             } else if (element == 'p') {
                 const image = create_image("/static/images/cat.png");
                 field.appendChild(image);
+                field.setAttribute("class", "player");
             }
+            field.setAttribute("id", counter);
             document.getElementById("game").appendChild(field);
             counter += 1; // counting the number of fields
         })
@@ -68,7 +75,7 @@ const game_render = function(map) {
     console.log(counter)
 };
 
-const map_loader = function (level) {
+const map_loader = function(level) {
     const map = level;
     return map
 };
@@ -84,18 +91,20 @@ const level_selector = function(level) {
     return map_level
 };
 
-const game_initiate = function(){
+const game_initiate = function() {
     map = level_selector('level1');
     game_render(map);
 };
 
-const window_prep = function(){
+const window_prep = function() {
   document.getElementById('start').remove();
-  game_initiate()
+  game_initiate();
 };
 
 let map = [];
 document.getElementById('start').addEventListener('click', window_prep);
+document.onkeydown = anim;
+
 
 
 
