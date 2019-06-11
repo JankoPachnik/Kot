@@ -11,7 +11,7 @@ const map_loader = function (level) {
     return map
 };
 
-const create_object = function(type, styles = {backgroundColor:"white", width:"0x", margin:"0px", height:"0px", cssFloat:"none"}){
+const create_object = function(type, styles = {backgroundColor:"black", width:"0x", margin:"0px", height:"0px", cssFloat:"none"}){
     const object = document.createElement(type);
     object.style.backgroundColor = styles["backgroundColor"];
     object.style.width = styles["width"];
@@ -22,7 +22,7 @@ const create_object = function(type, styles = {backgroundColor:"white", width:"0
 };
 
 const create_field = function(){
-    const field = create_object("div", {backgroundColor:"black", width:"30px", margin:"0px", height:"30px", cssFloat:"left"});
+    const field = create_object("div", {backgroundColor:"white", width:"30px", margin:"0px", height:"30px", cssFloat:"left"});
     return field
 };
 
@@ -60,6 +60,9 @@ const map_render = function(map) {
                 field.appendChild(image);
             } else if (element == 'k') {
                 const image = create_image("/static/images/key.png");
+                field.appendChild(image);
+            } else if (element == 'p') {
+                const image = create_image("/static/images/cat.png");
                 field.appendChild(image);
             }
             document.getElementById("game").appendChild(field);
