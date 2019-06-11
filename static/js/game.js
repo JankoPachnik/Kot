@@ -38,13 +38,13 @@ const game_render = function(map) {
             if (element == 0){
                 //const image = create_image("/static/images/grass.jpg");
                 //field.appendChild(image);
-            } else if (element == 1) { //box rendering
+            } else if (element == 'b') { //box rendering
                 const image = create_image("/static/images/box.jpg");
                 field.appendChild(image);
-            } else if (element == 2){
+            } else if (element == 'w'){
                 const image = create_image("/static/images/wall.png");
                 field.appendChild(image);
-            } else if (element == 3) {
+            } else if (element == 'l') {
                 const image = create_image("/static/images/lighter.png");
                 field.appendChild(image);
             } else if (element == 'm') {
