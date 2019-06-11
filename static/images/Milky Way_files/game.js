@@ -16,22 +16,22 @@ const create_object = function(type, styles = {backgroundColor:"black", width:"0
     return object
 };
 
-const create_field = function() {
+const create_field = function(){
     const field = create_object("div", {backgroundColor:"black", width:"30px", margin:"0px", height:"30px", cssFloat:"left"});
     return field
 };
 
-const create_image = function(path) {
+const create_image = function(path){
     const image = create_object("img", {width:"100%", height:"100%"});
     image.setAttribute("src", path);
     return image
 };
 
-const game_render = function(map) {
+const map_render = function(map) {
     let counter = 0;
     const game = create_object("div", {width:"900px", height:"600px", margin:"auto"});
     game.setAttribute("id", "game");
-    document.getElementById('game_window').appendChild(game);
+    document.body.appendChild(game);
     map.forEach(function (element) {
         element.forEach(function (element) {
             const field = create_field();
@@ -73,7 +73,7 @@ const map_loader = function (level) {
     return map
 };
 
-const level_selector = function(level) {
+const level_selector = function(level){
     var map_level =[];
     if(level == 'level1')
         map_level = map_loader(level1());
@@ -84,17 +84,8 @@ const level_selector = function(level) {
     return map_level
 };
 
-const game_initiate = function(){
-    map = level_selector('level1');
-    game_render(map);
-};
-
-const window_prep = function(){
-  document.getElementById('start').remove();
-  game_initiate()
-};
-
-let map = [];
-document.getElementById('start').addEventListener('click', window_prep);
-
+document.body.style.backgroundColor = "lightgray";
+//map_generate(20);
+const map = level_selector('level1');
+map_render(map);
 
