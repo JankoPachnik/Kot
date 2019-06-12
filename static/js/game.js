@@ -58,6 +58,11 @@ const game_render = function(map) {
                 image.setAttribute("id", "cat");
                 field.appendChild(image);
                 field.setAttribute("class", "start");
+            }else if (element === 'z') {
+                const image = create_image("/static/images/knight_02.png");
+                image.setAttribute("id", "cat");
+                field.appendChild(image);
+                field.setAttribute("class", "start");
             }
             field.setAttribute("id", counter);
             document.getElementById("game").appendChild(field);
