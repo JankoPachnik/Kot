@@ -5,8 +5,19 @@
     <script src="../static/js/levels.js" defer></script>
     <script src="../static/js/game.js" defer></script>
     <script src="../static/js/player.js" defer></script>
+    <script src="../static/js/drop.js" defer></script>
     <meta charset="UTF-8">
     <title>Milky Way</title>
+    <style>
+        .dropzone {
+          width: 30px;
+          height: 20px;
+          background: black;
+          margin-bottom: 10px;
+          padding: 10px;
+        }
+
+    </style>
 </head>
 <body style="background-color: gray">
 <div class="container">
@@ -14,7 +25,7 @@
         <tr>
         <td><img src="../static/images/cat.png" alt="Cat" width="150" height="150"></td>
         <td><div class="txt"><h2>NA DRODZE DO</h2></div></td>
-            <td><img src="../static/images/milk_02.png" alt="Milk" width="150" height="150"></td>
+            <td><img src="../static/images/milk.png" alt="Milk" width="150" height="150"></td>
         </tr>
     </table>
 </div>
@@ -30,6 +41,7 @@
     </div>
     <div class="container p-4 shadow-lg bg-light mt-5 rounded" id="game_window" style="height: 650px; width: 950px;">
         <button class="btn btn-outline-success m-auto" id="start">START</button>
+    </div>
     </div>
 </div>
 </body>

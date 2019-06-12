@@ -56,13 +56,14 @@ const game_render = function(map) {
             } else if (element == 'd') {
                 const image = create_image("/static/images/door.png");
                 field.appendChild(image);
-                field.setAttribute("class", "door");
+                field.setAttribute("class", "dropzone");
             } else if (element == 'k') {
                 const image = create_image("/static/images/key.png");
                 field.appendChild(image);
-                field.setAttribute("class", "key");
-            } else if (element == 'p') {
-                const image = create_image("/static/images/cat.png");
+                field.setAttribute("id", "draggable");
+                field.setAttribute("draggable", "true");
+            } else if (element == 's') {
+                const image = create_image("/   static/images/cat.png");
                 field.appendChild(image);
                 field.setAttribute("class", "player");
             }
@@ -104,7 +105,4 @@ const window_prep = function() {
 let map = [];
 document.getElementById('start').addEventListener('click', window_prep);
 document.onkeydown = anim;
-
-
-
 
