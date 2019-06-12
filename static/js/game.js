@@ -103,3 +103,4 @@ const window_prep = function() {
 
 let map = [];
 document.getElementById('start').addEventListener('click', window_prep);
+
