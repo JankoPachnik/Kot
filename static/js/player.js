@@ -32,8 +32,8 @@ const cat_move = function (direction, new_position) {
             if (!(document.getElementById(next_field).hasChildNodes())){
                 document.getElementById(next_field).appendChild(new_field.children[0]);
                 new_field.appendChild(document.getElementById("cat"));
+                cat_id = new_position;
             }
-            cat_id = new_position;
         }
         //place to add more interactive objects
     } else{
