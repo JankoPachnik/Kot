@@ -49,7 +49,10 @@ const game_render = function(map) {
                 const image = create_image("/static/images/door.png");
                 image.setAttribute("id", "door");
                 image.onclick = function () {
-                    field.removeChild(image);
+                   const answer = prompt("Do you really like milk?");
+                    if (answer == "yes") {
+                        field.removeChild(image);
+                    }
                 };
                 field.appendChild(image);
             } else if (element === 'k') {
