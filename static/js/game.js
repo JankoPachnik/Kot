@@ -30,13 +30,14 @@ const game_render = function(map) {
                 field.setAttribute("class", "empty");
             } else if (element === 'b') { //box rendering
                 const image = create_image("/static/images/box.jpg");
+                image.setAttribute("class", "box");
                 field.appendChild(image);
                 field.setAttribute("class", "box");
             } else if (element === 'w'){
                 const image = create_image("/static/images/wall.png");
                 field.appendChild(image);
                 field.setAttribute("class", "wall");
-            } else if (element === 'w') {
+            } else if (element === 'l') {
                 const image = create_image("/static/images/lighter.png");
                 field.appendChild(image);
                 field.setAttribute("class", "light");
