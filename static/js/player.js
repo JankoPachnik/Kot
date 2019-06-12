@@ -1,39 +1,29 @@
-/*function anim(e) {
-    let x_y = cat_start_coordinates(map);
-    let x = x_y[0];
-    let y = x_y[1];
-    if (e.keyCode === 39) {
-    //catLeft += 30; cat.style.left = catLeft + "px";
-    map[x][y+1] = 'p';
-    } else if (e.keyCode === 37) {
-    //catLeft -= 30; cat.style.left = catLeft + "px";
-    map[x][y-1] = 'p';
-    } else if (e.keyCode === 40) {
-    //catTop += 30; cat.style.top = catTop + "px";
-    map[x+1][y] = 'p';
-    } else if (e.keyCode === 38) {
-    map[x-1][y] = 'p';
-    //catTop -= 30; cat.style.top = catTop + "px";
+const anim = function (e) {
+    let keycode = e.keyCode;
+    if (keycode === 100) { // ->
+        cat_move("right", cat_id + 1);
+        return console.log("right");
+    } else if (keycode === 97) { // <-
+        cat_move("left", cat_id - 1);
+        return console.log("left");
+    } else if (keycode === 115) { // \/
+        cat_move("down", cat_id + 30);
+        return console.log("down");
+    } else if (keycode === 119) {  // /\
+        cat_move("up", cat_id - 30);
+        return console.log("up");
     }
-}
-
-(x*29) + y
-
-const cat_start_coordinates = function (map) {
-    let counter = 0;
-    map.forEach(function (element) {
-        if(element.includes('p')){
-            return [element.indexOf('p'), counter]
-        }
-        counter += 1;
-    })
 };
 
-const put_cat = function (id) {
-    let cat = create_image("/static/images/cat.png");
-    if document.getElementById(id)
-        document.getElementById(id).appendChild(cat);
-    else {
+const cat_starting_id = function () {
+    let start = document.getElementsByClassName("start");
+    cat_id = start[0].id;
+};
 
-    }
-};*/
+const cat_move = function (direction, new_position) {
+    document.getElementById(new_position).appendChild(document.getElementById("cat"));
+    cat_id = new_position;
+};
+
+document.body.addEventListener('keypress', anim);
+let cat_id = 0;

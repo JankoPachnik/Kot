@@ -1,11 +1,3 @@
-/*const map_generate = function (map_size=20) {
-    for(let i = 0; i<map_size; i++){
-        map.push([]);
-        for(let j = 0; j<map_size * 1.5; j++){
-            map[i].push(0);
-        }
-    }
-};*/ //Map generating
 const create_object = function(type, styles = {backgroundColor:"black", width:"0x", margin:"0px", height:"0px", cssFloat:"none"}){
     const object = document.createElement(type);
     object.style.backgroundColor = styles["backgroundColor"];
@@ -17,8 +9,7 @@ const create_object = function(type, styles = {backgroundColor:"black", width:"0
 };
 
 const create_field = function() {
-    const field = create_object("div", {backgroundColor:"black", width:"30px", margin:"0px", height:"30px", cssFloat:"left"});
-    return field
+    return create_object("div", {backgroundColor:"black", width:"30px", margin:"0px", height:"30px", cssFloat:"left"});
 };
 
 const create_image = function(path) {
@@ -35,36 +26,37 @@ const game_render = function(map) {
     map.forEach(function (element) {
         element.forEach(function (element) {
             const field = create_field();
-            if (element == 0){
+            if (element === 0){
                 field.setAttribute("class", "empty");
-            } else if (element == 'b') { //box rendering
+            } else if (element === 'b') { //box rendering
                 const image = create_image("/static/images/box.jpg");
                 field.appendChild(image);
                 field.setAttribute("class", "box");
-            } else if (element == 'w'){
+            } else if (element === 'w'){
                 const image = create_image("/static/images/wall.png");
                 field.appendChild(image);
                 field.setAttribute("class", "wall");
-            } else if (element == 'w') {
+            } else if (element === 'w') {
                 const image = create_image("/static/images/lighter.png");
                 field.appendChild(image);
                 field.setAttribute("class", "light");
-            } else if (element == 'm') {
+            } else if (element === 'm') {
                 const image = create_image("/static/images/milk.png");
                 field.appendChild(image);
                 field.setAttribute("class", "milk");
-            } else if (element == 'd') {
+            } else if (element === 'd') {
                 const image = create_image("/static/images/door.png");
                 field.appendChild(image);
                 field.setAttribute("class", "door");
-            } else if (element == 'k') {
+            } else if (element === 'k') {
                 const image = create_image("/static/images/key.png");
                 field.appendChild(image);
                 field.setAttribute("class", "key");
-            } else if (element == 'p') {
+            } else if (element === 's') {
                 const image = create_image("/static/images/cat.png");
+                image.setAttribute("id", "cat");
                 field.appendChild(image);
-                field.setAttribute("class", "player");
+                field.setAttribute("class", "start");
             }
             field.setAttribute("id", counter);
             document.getElementById("game").appendChild(field);
@@ -75,25 +67,21 @@ const game_render = function(map) {
     console.log(counter)
 };
 
-const map_loader = function(level) {
-    const map = level;
-    return map
-};
-
 const level_selector = function(level) {
-    var map_level =[];
-    if(level == 'level1')
-        map_level = map_loader(level1());
-    else if(level == 'level2')
-        map_level = map_loader(level2());
-    else if(level == 'level3')
-        map_level = map_loader(level3());
+    let map_level = [];
+    if(level === 'level1')
+        map_level = level1();
+    else if(level === 'level2')
+        map_level = level2();
+    else if(level === 'level3')
+        map_level = level3();
     return map_level
 };
 
 const game_initiate = function() {
-    map = level_selector('level1');
+    map = level_selector('level1'); // need to add custom level selection
     game_render(map);
+    cat_starting_id();
 };
 
 const window_prep = function() {
@@ -103,8 +91,5 @@ const window_prep = function() {
 
 let map = [];
 document.getElementById('start').addEventListener('click', window_prep);
-document.onkeydown = anim;
-
-
 
 
