@@ -22,10 +22,12 @@ const cat_starting_id = function () {
 
 const cat_move = function (direction, new_position) {
     let new_field = document.getElementById(new_position);
-    if(new_field.children)
+    if (new_field.children)
         console.log("yup");
     if (new_field.className === "wall")
         console.log("wall");
+    if (new_field.className === "wall")
+        console.log("end");
     else if(new_field.hasChildNodes()){
         if (new_field.children[0].className === "box") {
             let next_field = new_position + direction;
