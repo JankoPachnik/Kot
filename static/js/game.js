@@ -47,12 +47,15 @@ const game_render = function(map) {
                 field.setAttribute("class", "milk");
             } else if (element === 'd') {
                 const image = create_image("/static/images/door.png");
+                image.setAttribute("id", "door");
+                image.onclick = function () {
+                    field.removeChild(image);
+                };
                 field.appendChild(image);
-                field.setAttribute("class", "door");
             } else if (element === 'k') {
                 const image = create_image("/static/images/key.png");
+                image.setAttribute("id", "key");
                 field.appendChild(image);
-                field.setAttribute("class", "key");
             } else if (element === 's') {
                 const image = create_image("/static/images/cat.png");
                 image.setAttribute("id", "cat");
@@ -97,5 +100,3 @@ const window_prep = function() {
 
 let map = [];
 document.getElementById('start').addEventListener('click', window_prep);
-
-
