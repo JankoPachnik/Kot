@@ -49,7 +49,7 @@ const game_render = function(map) {
                 const image = create_image("/static/images/door.png");
                 image.setAttribute("id", "door");
                 image.onclick = function () {
-                   const answer = prompt("Do you really like milk?");
+                const answer = prompt("Do you really like milk?");
                     if (answer == "yes") {
                         field.removeChild(image);
                     }
@@ -61,11 +61,6 @@ const game_render = function(map) {
                 field.appendChild(image);
             } else if (element === 's') {
                 const image = create_image("/static/images/cat.png");
-                image.setAttribute("id", "cat");
-                field.appendChild(image);
-                field.setAttribute("class", "start");
-            }else if (element === 'z') {
-                const image = create_image("/static/images/knight_02.png");
                 image.setAttribute("id", "cat");
                 field.appendChild(image);
                 field.setAttribute("class", "start");
