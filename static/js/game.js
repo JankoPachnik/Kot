@@ -34,7 +34,7 @@ const game_render = function(map) {
                 field.appendChild(image);
                 field.setAttribute("class", "box");
             } else if (element === 'w'){
-                const image = create_image("/static/images/wall.png");
+                const image = create_image("/static/images/wall2.png");
                 field.appendChild(image);
                 field.setAttribute("class", "wall");
             } else if (element === 'l') {
@@ -48,19 +48,14 @@ const game_render = function(map) {
             } else if (element === 'd') {
                 const image = create_image("/static/images/door.png");
                 image.setAttribute("id", "door");
-                image.onclick = function () {
-                const answer = prompt("Do you really like milk?");
-                    if (answer == "yes") {
-                        field.removeChild(image);
-                    }
-                };
                 field.appendChild(image);
+                field.setAttribute("class", "door");
             } else if (element === 'k') {
                 const image = create_image("/static/images/key.png");
                 image.setAttribute("id", "key");
                 field.appendChild(image);
             } else if (element === 's') {
-                const image = create_image("/static/images/cat.png");
+                const image = create_image("/static/images/cat-right.png");
                 image.setAttribute("id", "cat");
                 field.appendChild(image);
                 field.setAttribute("class", "start");
@@ -85,17 +80,18 @@ const level_selector = function(level) {
     return map_level
 };
 
-const game_initiate = function() {
-    map = level_selector('level1'); // need to add custom level selection
+const game_initiate = function(level) {
+    map = level_selector(level); // need to add custom level selection
     game_render(map);
     cat_starting_id();
 };
 
 const window_prep = function() {
   document.getElementById('start').remove();
-  game_initiate();
+  game_initiate('level1');
 };
 
+let current_level = 'level1';
 let map = [];
 document.getElementById('start').addEventListener('click', window_prep);
 
