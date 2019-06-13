@@ -33,10 +33,18 @@ const game_render = function(map) {
                 image.setAttribute("class", "box");
                 field.appendChild(image);
                 field.setAttribute("class", "box");
-            } else if (element === 'w'){
+            } else if (element === 'w') {
                 const image = create_image("/static/images/wall2.png");
                 field.appendChild(image);
                 field.setAttribute("class", "wall");
+            } else if (element === 1) {
+                const image = create_image("/static/images/water.jpg");
+                field.appendChild(image);
+                field.setAttribute("class", "water");
+            } else if (element === 'g') {
+                const image = create_image("/static/images/grass.jpg");
+                field.appendChild(image);
+                field.setAttribute("class", "grass");
             } else if (element === 'l') {
                 const image = create_image("/static/images/lighter.png");
                 field.appendChild(image);

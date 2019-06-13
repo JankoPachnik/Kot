@@ -43,7 +43,9 @@ const cat_move_logic = function (direction, new_position) {
             if (doingMaths() === true) {
                   new_field.children[0].remove();
                 }
-            }
+        } else if (new_field.className === "grass") {
+            move_cat(new_position, new_field);
+        }
             //place to add more interactive objects
     }
     else {
@@ -69,10 +71,8 @@ const doingMaths = function() {
     const displayedEquationString = displayedEquation.toString();
     let answer = prompt(displayedEquationString);
     if (eval(equations[displayed_Equation_Index]) === parseInt(answer)) {
-        alert("Correct!");
         return true;
     } else {
-        alert("Incorrect! Try again");
         return false;
         }
     };
