@@ -37,20 +37,26 @@ const cat_move_logic = function (direction, new_position) {
             } else if (current_level === 'level2') {
                 document.getElementById("game").remove();
                 current_level = 'level3';
-                game_initiate('level3')
-            }
+                game_initiate('level3')}
+        } else if (new_field.className === "key") {
+            new_field.children[0].remove();
+            inventory.push("key");
+            inventory_reload();
+            move_cat(new_position, new_field);
         } else if (new_field.className === "door") {
-            if (doingMaths() === true) {
+            if (inventory.includes("key")) {
                   new_field.children[0].remove();
+                  move_cat(new_position, new_field);
+                  inventory.pop();
+                  inventory_reload()
                 }
         } else if (new_field.className === "grass") {
             move_cat(new_position, new_field);
         }
             //place to add more interactive objects
     }
-    else {
-            move_cat(new_position, new_field);
-        }
+    else
+        move_cat(new_position, new_field);
 };
 
 const move_cat = function(new_position, new_field){

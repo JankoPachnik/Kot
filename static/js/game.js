@@ -38,11 +38,11 @@ const game_render = function(map) {
                 field.appendChild(image);
                 field.setAttribute("class", "wall");
             } else if (element === 1) {
-                const image = create_image("/static/images/water.jpg");
+                const image = create_image("/static/images/water2.png");
                 field.appendChild(image);
                 field.setAttribute("class", "water");
             } else if (element === 'g') {
-                const image = create_image("/static/images/grass.jpg");
+                const image = create_image("/static/images/grass2.png");
                 field.appendChild(image);
                 field.setAttribute("class", "grass");
             } else if (element === 'l') {
@@ -50,7 +50,7 @@ const game_render = function(map) {
                 field.appendChild(image);
                 field.setAttribute("class", "light");
             } else if (element === 'm') {
-                const image = create_image("/static/images/milk.png");
+                const image = create_image("/static/images/molk.png");
                 field.appendChild(image);
                 field.setAttribute("class", "milk");
             } else if (element === 'd') {
@@ -59,9 +59,10 @@ const game_render = function(map) {
                 field.appendChild(image);
                 field.setAttribute("class", "door");
             } else if (element === 'k') {
-                const image = create_image("/static/images/key.png");
+                const image = create_image("/static/images/kay.png");
                 image.setAttribute("id", "key");
                 field.appendChild(image);
+                field.setAttribute("class", "key");
             } else if (element === 's') {
                 const image = create_image("/static/images/cat-right.png");
                 image.setAttribute("id", "cat");
@@ -91,6 +92,7 @@ const level_selector = function(level) {
 const game_initiate = function(level) {
     map = level_selector(level); // need to add custom level selection
     game_render(map);
+    inventory = [];
     cat_starting_id();
 };
 
@@ -99,6 +101,20 @@ const window_prep = function() {
   game_initiate('level1');
 };
 
+const inventory_reload = function(path = "/static/images/kay.png") {
+    let field_inv = document.getElementById("inventory");
+    if (inventory.includes("key")) {
+        let new_image = create_image(path);
+        new_image.style.width = "50px";
+        new_image.style.height = "50px";
+        field_inv.appendChild(new_image);
+    } else if (!inventory.includes("key")){
+        console.log(field_inv.childNodes[1]);
+        field_inv.childNodes[1].remove()
+    }
+};
+
+let inventory = [];
 let current_level = 'level1';
 let map = [];
 document.getElementById('start').addEventListener('click', window_prep);
